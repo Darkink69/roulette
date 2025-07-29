@@ -15,7 +15,7 @@ import Main from "@/pages/MainPage/Main";
 // import Slipper from "@/components/MainPage/Slipper";
 // import BtnStart from "@/components/MainPage/BtnStart";
 
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
