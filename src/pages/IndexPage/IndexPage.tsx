@@ -1,18 +1,17 @@
-import { Cell, Image } from "@telegram-apps/telegram-ui";
-// import { Cell } from "@telegram-apps/telegram-ui";
+// import { Cell, Image } from "@telegram-apps/telegram-ui";
 
-import { Link } from "@/components/Link/Link.tsx";
+// import { Link } from "@/components/Link/Link.tsx";
 // import { Routes, Route } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import store from "../../store/store";
 import { Page } from "@/components/Page.tsx";
 
-import tonSvg from "./ton.svg";
+// import tonSvg from "./ton.svg";
 
 import Main from "@/pages/MainPage/Main";
-import Tasks from "@/pages/Tasks/Tasks";
-import Roulette from "@/pages/Roulette/Roulette";
-import Reff from "@/pages/Reff/Reff";
+// import Tasks from "@/pages/Tasks/Tasks";
+// import Roulette from "@/pages/Roulette/Roulette";
+// import Reff from "@/pages/Reff/Reff";
 
 import { type FC } from "react";
 import {
@@ -61,17 +60,17 @@ export const IndexPage: FC = observer(() => {
       </div>
 
       {/* <Websocket /> */}
-      <Link to="/ton-connect">
+      {/* <Link to="/ton-connect">
         <Cell
           before={<Image src={tonSvg} style={{ backgroundColor: "#007AFF" }} />}
           subtitle="Connect your TON wallet"
         >
           TON Connect
         </Cell>
-      </Link>
+      </Link> */}
       {/* <LocationComponent /> */}
 
-      <Link to="/tasks">
+      {/* <Link to="/tasks">
         <Tasks />
       </Link>
       <Link to="/roulette">
@@ -79,7 +78,7 @@ export const IndexPage: FC = observer(() => {
       </Link>
       <Link to="/reff">
         <Reff />
-      </Link>
+      </Link> */}
       {/* <List>
         <Section
           header="Features"
