@@ -1,19 +1,18 @@
-// import { Section, Cell, Image } from "@telegram-apps/telegram-ui";
+import { Cell, Image } from "@telegram-apps/telegram-ui";
 // import { Cell } from "@telegram-apps/telegram-ui";
 
-// import { Link } from "@/components/Link/Link.tsx";
+import { Link } from "@/components/Link/Link.tsx";
+// import { Routes, Route } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import store from "../../store/store";
 import { Page } from "@/components/Page.tsx";
 
-// import tonSvg from "./ton.svg";
+import tonSvg from "./ton.svg";
 
 import Main from "@/pages/MainPage/Main";
-// import GiftCards from "@/components/MainPage/GiftCards";
-// import Header from "@/components/MainPage/Header";
-// import ProgressBar from "@/components/MainPage/ProgressBar";
-// import Slipper from "@/components/MainPage/Slipper";
-// import BtnStart from "@/components/MainPage/BtnStart";
+import Tasks from "@/pages/Tasks/Tasks";
+import Roulette from "@/pages/Roulette/Roulette";
+import Reff from "@/pages/Reff/Reff";
 
 import { type FC } from "react";
 import {
@@ -62,23 +61,25 @@ export const IndexPage: FC = observer(() => {
       </div>
 
       {/* <Websocket /> */}
-      {/* <Link to="/ton-connect">
+      <Link to="/ton-connect">
         <Cell
-          // before={
-          //   <Image src={tonSvg} style={{ backgroundColor: "#007AFF" }} />
-          // }
+          before={<Image src={tonSvg} style={{ backgroundColor: "#007AFF" }} />}
           subtitle="Connect your TON wallet"
         >
           TON Connect
         </Cell>
-      </Link> */}
+      </Link>
       {/* <LocationComponent /> */}
 
-      {/* <Link to="/init-data">
-        <Cell subtitle="User data, chat information, technical data">
-          Init Data
-        </Cell>
-      </Link> */}
+      <Link to="/tasks">
+        <Tasks />
+      </Link>
+      <Link to="/roulette">
+        <Roulette />
+      </Link>
+      <Link to="/reff">
+        <Reff />
+      </Link>
       {/* <List>
         <Section
           header="Features"

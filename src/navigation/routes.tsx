@@ -1,10 +1,12 @@
-import type { ComponentType, JSX } from 'react';
+import type { ComponentType, JSX } from "react";
 
-import { IndexPage } from '@/pages/IndexPage/IndexPage';
-import { InitDataPage } from '@/pages/InitDataPage.tsx';
-import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
-import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
-import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
+import { IndexPage } from "@/pages/IndexPage/IndexPage";
+import { Tasks } from "@/pages/Tasks/Tasks.tsx";
+import { Roulette } from "@/pages/Roulette/Roulette.tsx";
+import { Reff } from "@/pages/Reff/Reff.tsx";
+import { Faq } from "@/pages/Faq/Faq.tsx";
+
+import { TONConnectPage } from "@/pages/TONConnectPage/TONConnectPage";
 
 interface Route {
   path: string;
@@ -14,14 +16,16 @@ interface Route {
 }
 
 export const routes: Route[] = [
-  { path: '/', Component: IndexPage },
-  { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
-  { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
-  { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
+  { path: "/", Component: IndexPage },
+  { path: "/tasks", Component: Tasks, title: "Tasks" },
+  { path: "/roulette", Component: Roulette, title: "Roulette" },
+  { path: "/reff", Component: Reff, title: "Reff" },
+  { path: "/faq", Component: Faq, title: "Faq" },
+
   {
-    path: '/ton-connect',
+    path: "/ton-connect",
     Component: TONConnectPage,
-    title: 'TON Connect',
+    title: "TON Connect",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

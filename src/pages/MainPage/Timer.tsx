@@ -28,7 +28,7 @@ const TimerDays = () => {
           minutes: 59,
         }));
       }
-    }, 1000);
+    }, 60000);
 
     return () => clearInterval(interval);
   }, [time]);
@@ -36,26 +36,26 @@ const TimerDays = () => {
   return (
     <>
       <div className="w-full h-[100px] rounded-3xl backdrop-blur-md flex items-center justify-center">
-        <p className="text-white text-2xl font-bold text-center px-4">
+        <div className="text-white text-2xl days text-center px-4">
           <div className="relative flex items-center justify-center w-full h-28 rounded-3xl">
-            <div className="flex items-center justify-center text-white text-7xl">
+            <h1 className="flex items-center justify-center text-white text-7xl">
               <span className="flex flex-col items-center">
                 {time.days}
-                <span className="text-3xl">дней</span>
+                <span className="text-4xl nunito-sans-400">дней</span>
               </span>
               <span className="mx-2">:</span>
               <span className="flex flex-col items-center">
                 {time.hours}
-                <span className="text-3xl">часа</span>
+                <span className="text-4xl nunito-sans-400">часа</span>
               </span>
               <span className="mx-2">:</span>
               <span className="flex flex-col items-center">
                 {time.minutes}
-                <span className="text-3xl">мин</span>
+                <span className="text-4xl nunito-sans-400">мин</span>
               </span>
-            </div>
+            </h1>
           </div>
-        </p>
+        </div>
       </div>
     </>
   );
