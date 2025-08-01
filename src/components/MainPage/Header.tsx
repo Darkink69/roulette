@@ -19,11 +19,11 @@ const Header = observer(({ ava }: any) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute top-9 left-4">
+        {/* <div className="absolute top-9 left-4">
           <span className="text-[#00FF99] bg-[#2B2A2A] text-xs font-maven-pro pt-0.5 pb-0.5 pr-2 pl-2 rounded-2xl">
             {store.steps}
           </span>
-        </div>
+        </div> */}
       </div>
 
       <div className="flex items-center">

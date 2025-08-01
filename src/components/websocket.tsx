@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import store from "../store/store";
 
@@ -8,25 +8,25 @@ interface User {
   languageCode: string;
 }
 
-interface Steps {
-  id: number;
-  steps: number;
-}
+// interface Steps {
+//   id: number;
+//   steps: number;
+// }
 
 interface WebSocketMessage {
   endpoint: string;
   payload: User;
 }
 
-interface StepsUpdateMessage {
-  endpoint: string;
-  payload: Steps;
-}
+// interface StepsUpdateMessage {
+//   endpoint: string;
+//   payload: Steps;
+// }
 
 export const WebSocketComponent = observer(() => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
-  const intervalRef = useRef<any>(null);
+  // const intervalRef = useRef<any>(null);
 
   useEffect(() => {
     const ws = new WebSocket(import.meta.env.VITE_API_URL + "/ws");
@@ -38,7 +38,7 @@ export const WebSocketComponent = observer(() => {
 
     ws.onmessage = (event) => {
       const response = JSON.parse(event.data);
-      store.setSteps(response.steps);
+      // store.setSteps(response.steps);
       console.log(response.coins, "response.coins!!");
       if (response.coins !== undefined) {
         store.setCoins(response.coins);
@@ -49,13 +49,13 @@ export const WebSocketComponent = observer(() => {
 
       if (!isInitialized && response.result) {
         setIsInitialized(true);
-        startStepsUpdateInterval(ws);
+        // startStepsUpdateInterval(ws);
       }
     };
 
     ws.onclose = () => {
       console.log("Disconnected");
-      stopStepsUpdateInterval();
+      // stopStepsUpdateInterval();
     };
 
     ws.onerror = (error) => console.error("WebSocket error:", error);
@@ -65,30 +65,30 @@ export const WebSocketComponent = observer(() => {
 
     return () => {
       ws.close();
-      stopStepsUpdateInterval();
+      // stopStepsUpdateInterval();
     };
   }, []);
 
   // Запуск интервала для отправки шагов
-  const startStepsUpdateInterval = (ws: WebSocket) => {
-    stopStepsUpdateInterval(); // Останавливаем предыдущий интервал, если был
-    const timeInterval = Number(import.meta.env.VITE_TIME);
-    intervalRef.current = setInterval(() => {
-      console.log(store.start, "start!!");
+  // const startStepsUpdateInterval = (ws: WebSocket) => {
+  //   stopStepsUpdateInterval(); // Останавливаем предыдущий интервал, если был
+  //   const timeInterval = Number(import.meta.env.VITE_TIME);
+  //   intervalRef.current = setInterval(() => {
+  //     console.log(store.start, "start!!");
 
-      if (store.start) {
-        sendStepsUpdate(ws);
-      }
-    }, timeInterval); // Каждые N секунд
-  };
+  //     if (store.start) {
+  //       sendStepsUpdate(ws);
+  //     }
+  //   }, timeInterval); // Каждые N секунд
+  // };
 
   // Остановка интервала
-  const stopStepsUpdateInterval = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
+  // const stopStepsUpdateInterval = () => {
+  //   if (intervalRef.current) {
+  //     clearInterval(intervalRef.current);
+  //     intervalRef.current = null;
+  //   }
+  // };
 
   const sendUserRequest = (ws: WebSocket) => {
     const message: WebSocketMessage = {
@@ -103,34 +103,34 @@ export const WebSocketComponent = observer(() => {
     ws.send(JSON.stringify(message));
   };
 
-  const sendStepsUpdate = (ws: WebSocket) => {
-    if (!store.start) {
-      console.log("Steps update skipped - store.start is false");
-      return;
-    }
+  // const sendStepsUpdate = (ws: WebSocket) => {
+  //   if (!store.start) {
+  //     console.log("Steps update skipped - store.start is false");
+  //     return;
+  //   }
 
-    const message: StepsUpdateMessage = {
-      endpoint: "steps",
-      payload: {
-        id: store.user?.id || 0,
-        steps: store.steps || 0,
-      },
-    };
+  //   const message: StepsUpdateMessage = {
+  //     endpoint: "steps",
+  //     payload: {
+  //       id: store.user?.id || 0,
+  //       steps: store.steps || 0,
+  //     },
+  //   };
 
-    if (ws.readyState === WebSocket.OPEN) {
-      ws.send(JSON.stringify(message));
-      console.log("Steps update sent:", message);
-    } else {
-      console.log("Cannot send steps update - WebSocket not ready");
-    }
-  };
+  //   if (ws.readyState === WebSocket.OPEN) {
+  //     ws.send(JSON.stringify(message));
+  //     console.log("Steps update sent:", message);
+  //   } else {
+  //     console.log("Cannot send steps update - WebSocket not ready");
+  //   }
+  // };
 
   // Останавливаем интервал при изменении store.start на false
-  useEffect(() => {
-    if (!store.start) {
-      stopStepsUpdateInterval();
-    }
-  }, [store.start]);
+  // useEffect(() => {
+  //   if (!store.start) {
+  //     stopStepsUpdateInterval();
+  //   }
+  // }, [store.start]);
 
   return null;
 });

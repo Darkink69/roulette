@@ -13,7 +13,7 @@ import Main from "@/pages/MainPage/Main";
 // import Roulette from "@/pages/Roulette/Roulette";
 // import Reff from "@/pages/Reff/Reff";
 
-import { type FC } from "react";
+import { useEffect, type FC } from "react";
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
@@ -38,20 +38,21 @@ export const IndexPage: FC = observer(() => {
   const initDataRaw = useSignal(_initDataRaw);
   const initDataState = useSignal(_initDataState);
   console.log(initDataRaw);
-  // console.log(initDataState?.user);
+  console.log(initDataState);
   store.setUser(initDataState?.user);
   // const tg = window.Telegram.WebApp;
   // console.log(tg, 'tg!')
-  // useEffect(() => {
-  //   fetch(
-  //     `https://toncenter.com/api/v2/getAddressBalance?address=UQDncYGSo8oA2jQVZwolIiTdylIE4QAeNtrpkmwW9sYjX0bB`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => store.setTons(data.result))
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+
+  useEffect(() => {
+    fetch(
+      `https://toncenter.com/api/v2/getAddressBalance?address=UQDncYGSo8oA2jQVZwolIiTdylIE4QAeNtrpkmwW9sYjX0bB`
+    )
+      .then((response) => response.json())
+      .then((data) => store.setTons(data.result))
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <Page back={false}>

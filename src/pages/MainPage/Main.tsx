@@ -1,7 +1,10 @@
 import Footer from "../Footer";
 import TimerDays from "./Timer";
+import { observer } from "mobx-react-lite";
+import { type FC } from "react";
+import store from "../../store/store";
 
-const Main = () => {
+const Main: FC = observer(() => {
   return (
     <>
       <div className="relative h-screen w-full flex flex-col items-center bg-purple-700 overflow-hidden bg-[url('https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/bg_roulette.png')] bg-cover bg-no-repeat bg-center">
@@ -39,7 +42,7 @@ const Main = () => {
                 alt="FCNT"
               />
               <div className="ml-1 bg-linear-to-r from-[#FFE561] to-[#FF8827] bg-clip-text text-transparent">
-                394
+                {store.coins}
               </div>
             </div>
             <div className="flex items-center text-white text-2xl font-bold days">
@@ -49,7 +52,7 @@ const Main = () => {
                 alt="TON"
               />
               <div className="ml-1 bg-linear-to-r from-[#5DE1FF] to-[#009EFF] bg-clip-text text-transparent">
-                0
+                {store.tonBalance}
               </div>
             </div>
           </div>
@@ -68,6 +71,6 @@ const Main = () => {
       </div>
     </>
   );
-};
+});
 
 export default Main;

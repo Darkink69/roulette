@@ -1,11 +1,11 @@
 // import React from 'react';
 import { observer } from "mobx-react-lite";
-import store from "../../store/store";
+// import store from "../../store/store";
 
 const BtnStart = observer(() => {
   return (
     <div className="flex justify-center pb-4">
-      {store.start ? (
+      {/* {store.start ? (
         <button
           onClick={() => {
             store.setStart(false);
@@ -23,7 +23,7 @@ const BtnStart = observer(() => {
         >
           Start
         </button>
-      )}
+      )} */}
     </div>
   );
 });

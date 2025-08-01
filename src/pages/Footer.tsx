@@ -1,57 +1,55 @@
-import { Link } from "@/components/Link/Link.tsx";
+import FooterItem from "./FooterItem";
 
 const Footer = () => {
+  const urlImg =
+    "https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/";
+
+  const data = [
+    {
+      img: urlImg + "main.png",
+      imgActive: urlImg + "main2.png",
+      link: "/",
+      alt: "main",
+    },
+    {
+      img: urlImg + "tasks.png",
+      imgActive: urlImg + "tasks2.png",
+      link: "/tasks",
+      alt: "tasks",
+    },
+    {
+      img: urlImg + "wallet.png",
+      imgActive: urlImg + "wallet2.png",
+      link: "/ton-connect",
+      alt: "wallet",
+    },
+    {
+      img: urlImg + "reff.png",
+      imgActive: urlImg + "reff2.png",
+      link: "/reff",
+      alt: "reff",
+    },
+    {
+      img: urlImg + "roulette.png",
+      imgActive: urlImg + "roulette2.png",
+      link: "/roulette",
+      alt: "roulette",
+    },
+    {
+      img: urlImg + "faq.png",
+      imgActive: urlImg + "faq2.png",
+      link: "/faq",
+      alt: "faq",
+    },
+  ];
+
+  const item = Array.from({ length: data.length }, (_, index) => (
+    <FooterItem key={index} data={data[index]} />
+  ));
   return (
-    <div className="flex justify-between">
-      <Link to="/">
-        <div className="m-1">
-          <img
-            src="https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/main.png"
-            alt="main"
-          />
-        </div>
-      </Link>
-      <Link to="/tasks">
-        <div className="m-1">
-          <img
-            src="https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/tasks.png"
-            alt="tasks"
-          />
-        </div>
-      </Link>
-      <Link to="/ton-connect">
-        <div className="m-1">
-          <img
-            src="https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/wallet.png"
-            alt="wallet"
-          />
-        </div>
-      </Link>
-      <Link to="/reff">
-        <div className="m-1">
-          <img
-            src="https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/reff.png"
-            alt="reff"
-          />
-        </div>
-      </Link>
-      <Link to="/roulette">
-        <div className="m-1">
-          <img
-            src="https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/roulette.png"
-            alt="roulette"
-          />
-        </div>
-      </Link>
-      <Link to="/faq">
-        <div className="m-1">
-          <img
-            src="https://s3.twcstorage.ru/c6bae09a-a5938890-9b68-453c-9c54-76c439a70d3e/Roulette/faq.png"
-            alt="faq"
-          />
-        </div>
-      </Link>
-    </div>
+    <>
+      <div className="flex justify-between">{item}</div>
+    </>
   );
 };
 
