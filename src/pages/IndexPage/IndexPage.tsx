@@ -43,6 +43,20 @@ export const IndexPage: FC = observer(() => {
   // const tg = window.Telegram.WebApp;
   // console.log(tg, 'tg!')
 
+    useEffect(() => {
+    fetch(
+      `http://oleg181219-woolf-f375.twc1.net/api/v1/auth/telegram/validate`, 
+      {method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(initDataRaw)}
+       )
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   useEffect(() => {
     fetch(
       `https://toncenter.com/api/v2/getAddressBalance?address=UQDncYGSo8oA2jQVZwolIiTdylIE4QAeNtrpkmwW9sYjX0bB`
